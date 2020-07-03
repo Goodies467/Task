@@ -8,7 +8,6 @@
     <script src="js/jquery.min.js" type="text/javascript"></script>
     <style>
         * {
-            /* font-family: "Helvetica Neue", Helvetica, STHeiTi, sans-serif; */
             font-size: 14px;
             padding: 0;
             margin: 0;
@@ -16,20 +15,11 @@
             list-style-type: none;
         }
 
-        img {
-            border: none;
-            vertical-align: middle;
-        }
-
-        .hide {
+        .dialog_hide {
             display: none;
         }
 
-        .left {
-            float: left;
-        }
-
-        /* 一般按钮 */
+        /* 按钮 */
         .btn {
             cursor: pointer;
             color: #fff;
@@ -78,7 +68,7 @@
             background-repeat: no-repeat;
         }
 
-        /* 弹窗右上角 ico 鼠标浮上去的样式 */
+        /* 弹窗右上角 ico 鼠标划上去的样式 */
         .dlg_btn_ico:hover {
             background-color: #eee;
         }
@@ -185,10 +175,9 @@
 </head>
 
 <body>
-    <input id="btn_show_dialog" type="button" value="显示弹窗" class="btn"
-        style="margin-left:50px; margin-top:100px" />
+    <input id="btn_show_dialog" type="button" value="显示弹窗" class="btn" style="margin-left:50px; margin-top:100px" />
     <!--弹窗-->
-    <div id="dialog" class="dialog hide" minheight="320" minwidth="660">
+    <div id="dialog" class="dialog dialog_hide" minheight="320" minwidth="660">
         <div id="dlg_top" class="dlg_top">
             <img class="dlg_logo" src="images/ico_logo.png" />
             <label class="dlg_title">弹出窗口</label>
@@ -215,7 +204,7 @@
         var preDialogTop = "0px";
         // 页面初始化
         $(function () {
-            // 常用功能
+            // 显示弹窗/隐藏弹窗
             $("#btn_show_dialog").bind("click", showDialog);
             $(".dlg_btn_close").bind("click", hideDialog);
             
@@ -223,7 +212,7 @@
             // 移动
             $("#dialog").bind("mousedown", moveHandler);
 
-            // 最大化 || 还原
+            // 最大化/还原
             $(".dlg_btn_max_top").bind("click", maxDialog);
             $(".dlg_btn_reback_top").bind("click", rebackDialog);
         });
