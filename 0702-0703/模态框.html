@@ -156,10 +156,8 @@
             z-index: 3;
         }
 
-        /* 缩放时右下拉块 */
+        /* 缩放时右下拉块  */
         #dlg_right_bottom {
-            width: 15px;
-            height: 15px;
             position: absolute;
             right: 0;
             bottom: 0;
@@ -363,57 +361,6 @@
                 else {
                     document.removeEventListener("mousemove", doDragToRightBottomToBottom, true);
                     document.removeEventListener("mouseup", stopDragToRightBottomToBottom, true);
-                }
-            };
-            // 右下拉
-            el_dlg_right_bottom.onmousedown = function (ev) {
-                var oEvent = ev || event;
-                mouseStart.x = oEvent.clientX;
-                mouseStart.y = oEvent.clientY;
-                divStart.x = el_dlg_right_bottom.offsetLeft;
-                divStart.y = el_dlg_right_bottom.offsetTop;
-                if (el_dlg_right_bottom.setCapture) {
-                    el_dlg_right_bottom.onmousemove = doDragToRightBottom;
-                    el_dlg_right_bottom.onmouseup = stopDragToRightBottom;
-                    el_dlg_right_bottom.setCapture();
-                }
-                else {
-                    document.addEventListener("mousemove", doDragToRightBottom, true);
-                    document.addEventListener("mouseup", stopDragToRightBottom, true);
-                }
-            };
-            function doDragToRightBottom(ev) {
-                var oEvent = ev || event;
-                var l = oEvent.clientX - mouseStart.x + divStart.x;
-                var t = oEvent.clientY - mouseStart.y + divStart.y;
-                var w = l + el_dlg_right_bottom.offsetWidth;
-                var h = t + el_dlg_right_bottom.offsetHeight;
-                if (w < el_dlg_right_bottom.offsetWidth) {
-                    w = el_dlg_right_bottom.offsetWidth;
-                }
-                else if (w > document.documentElement.clientWidth - el_dialog.offsetLeft) {
-                    w = document.documentElement.clientWidth - el_dialog.offsetLeft - 2;
-                }
-                if (h < el_dlg_right_bottom.offsetHeight) {
-                    h = el_dlg_right_bottom.offsetHeight;
-                }
-                else if (h > document.documentElement.clientHeight - el_dialog.offsetTop) {
-                    h = document.documentElement.clientHeight - el_dialog.offsetTop - 2;
-                }
-                if (w < minWidth) return;
-                el_dialog.style.width = w + "px";
-                if (h < minHeight) return;
-                el_dialog.style.height = h + "px";
-            };
-            function stopDragToRightBottom() {
-                if (el_dlg_right_bottom.releaseCapture) {
-                    el_dlg_right_bottom.onmousemove = null;
-                    el_dlg_right_bottom.onmouseup = null;
-                    el_dlg_right_bottom.releaseCapture();
-                }
-                else {
-                    document.removeEventListener("mousemove", doDragToRightBottom, true);
-                    document.removeEventListener("mouseup", stopDragToRightBottom, true);
                 }
             };
         };
