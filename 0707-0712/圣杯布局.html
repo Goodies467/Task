@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>圣杯布局</title>
+    <style>
+        /* 
+        
+        圣杯布局针对的是左右栏宽度固定，中间栏宽度自适应的网页布局，也叫双飞翼布局。它的布局有以下几点：
+        1、三列布局，中间宽度自适应，左右定宽
+        2、中间栏要在浏览器中优先展示渲染
+        3、允许任意列的高度最高
+
+         */
+        .header,
+        .footer {
+            border: 1px solid #333;
+            background: rgb(230, 228, 228);
+            text-align: center;
+        }
+
+        /* 给container设置弹性布局 */
+        .container {
+            display: flex;
+        }
+
+        /* left和right区域定宽，middle设置flex：1 */
+        .container_left {
+            width: 200px;
+            background: pink;
+        }
+
+        .container_middle {
+            /* flex: 1; */
+            flex-grow:1;
+            flex-shrink:1;
+            flex-basis:0;
+            background: rgb(199, 235, 41);
+        }
+
+        .container_right {
+            width: 220px;
+            background: lightblue;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 头部 -->
+    <div class="header">
+        <h4>header</h4>
+    </div>
+    <!-- 中部 -->
+    <div class="container">
+        <!-- 中部左侧 -->
+        <div class="container_left">
+            <h4>left</h4>
+            <p>left-content</p>
+        </div>
+        <!-- 中部中间 -->
+        <div class="container_middle">
+            <h4>middle</h4>
+            <p>middle-content</p>
+        </div>
+        <!-- 中部右侧 -->
+        <div class="container_right">
+            <h4>right</h4>
+            <p>right-content</p>
+        </div>
+    </div>
+    <!-- 尾部 -->
+    <div class="footer">
+        <h4>footer</h4>
+    </div>
+</body>
+
+</html>

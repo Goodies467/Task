@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<!-- 
+    分割字符串，存入数组
+    循环便利数组，找到 _ 分隔符
+    把分隔符后一位的字母调成大写 
+-->
+
+<body>
+    <script>
+        function nameConversion(text) {
+            var textList = text.split('');//把字符串转换成数组
+            for (let i = 0; i < textList.length; i++) {
+                if (textList[i] == '_') {
+                    textList.splice(i, 1);//删除 _ 分隔符
+                    textList[i] = textList[i].toUpperCase();//删除 _ 分隔符以后，后面的元素前移并直接修改为大写
+                }
+            }
+            console.log(textList);
+            var str = textList.join();//把数组转成字符串
+            var strHump = (str.replace(/,/g, ""));//利用正则表达式查找所有的 , 并且修改为空字符串
+            return strHump;//返回驼峰命名字符串
+        }
+        var strHump = nameConversion('this_is_a_kabel_case_string');
+        console.log(strHump);
+
+    </script>
+</body>
+
+</html>
